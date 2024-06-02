@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+
     <div class="container card shadow mt-2">
         <div class="card-body">
             <h1>Calculos Por consultor</h1>
@@ -70,7 +71,7 @@
                 <h6>Seleccione los consultores a los cuales desee obtener resultados:</h6>
 
                 <div class="row">
-                    <div class="col-9">
+                    <div class="col-sm-6 col-lg-9">
                         <table class="table table-striped">
                             <thead>
                                 <th class="w-75">Consultores</th>
@@ -92,7 +93,7 @@
                         </table>
                     </div>
 
-                    <div class="col-3">
+                    <div class="col-sm-6 col-lg-3">
                         <h6>Seleccionados:</h6>
                         <ul class="list-group mt-3" id="listSelected">
                         </ul>

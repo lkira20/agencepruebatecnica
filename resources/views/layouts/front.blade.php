@@ -6,7 +6,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{{route('consultor')}}"><img class="w-50" src="{{asset('images/img/logo-agence.png')}}" alt="Logo agence"></a>
+            <a class="navbar-brand d-inline" href="{{route('consultor')}}">Agence</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
