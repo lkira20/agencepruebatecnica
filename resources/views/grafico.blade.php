@@ -21,14 +21,6 @@
         let tituloGrafica = @json($tituloGrafica);
         let mesesname = @json($mesesName);
         let coUsuarios = @json($formatoGraficaCosUsuario);
-        coUsuarios.map(function(user) {
-            user.formatter = function(value) {
-                // Agrega el signo de dólar al valor
-                return '$' + value;
-            }
-            return user;
-        })
-        console.log(coUsuarios)
 
         // Data retrieved from https://www.ssb.no/energi-og-industri/olje-og-gass/statistikk/sal-av-petroleumsprodukt/artikler/auka-sal-av-petroleumsprodukt-til-vegtrafikk
 
@@ -63,17 +55,6 @@
                 }
             },
             series: coUsuarios
-            /*, {
-                type: 'line',
-                step: 'center',
-                name: 'Average',
-                data: [47, 83.33, 70.66, 239.33, 175.66],
-                marker: {
-                    lineWidth: 2,
-                    lineColor: Highcharts.getOptions().colors[3],
-                    fillColor: 'white'
-                }
-            }]*/
         });
     </script>
 @endsection
