@@ -8,6 +8,11 @@
 
     <div class="container card shadow mt-2">
         <div class="card-body">
+            <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off" checked>
+            <label class="btn btn-primary" for="option1">Por consultor</label>
+
+            <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off">
+            <label class="btn btn-outline-primary" for="option2">Por cliente</label>
             <h1>Calculos Por consultor</h1>
 
             <form action="{{ route('consultar') }}" method="POST">
@@ -15,7 +20,24 @@
                 <div class="container py-2 mt-3">
                     <h5>Periodo</h5>
                     <div class="row">
-                        <div class="col-md-6 col-lg-2">
+                        <div class="col-md-12 col-lg-4 border">
+                            <div class="row mb-2">
+                                <div class="col-6">
+                                    <label for="fechaInicio">Fecha inicio :</label>
+                                    <input name="fechaInicio" type="date" class="form-control" id="fechaInicio" class="date-picker"
+                                    placeholder="Fecha inicio" />
+                                </div>
+                                <div class="col-6">
+                                    <label for="fechaFin">Fecha fin :</label>
+                                    <input name="fechaFin" type="date" class="form-control" id="fechaFin" class="date-picker"
+                                    placeholder="Fecha fin" />
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
+                        {{--
+                        <div class="col-md-6 col-lg-2 border">
                             <label for="fechaInicio">Fecha inicio :</label>
                             <input name="fechaInicio" type="date" class="form-control" id="fechaInicio" class="date-picker"
                                 placeholder="Fecha inicio" />
@@ -25,9 +47,10 @@
                             <input name="fechaFin" type="date" class="form-control" id="fechaFin" class="date-picker"
                                 placeholder="Fecha fin" />
                         </div>
-                        <div class="col-md-6 col-lg-6">
+                        --}}
+                        <div class="col-md-6 col-lg-6 border">
                             <label for="">Seleccione el tipo de resultado a obtener:</label>
-                            <div class="row">
+                            <div class="row mb-2">
                                 <div class="col-4">
                                     <div class="d-grid gap-2">
                                         <input class="btn-check" type="radio" name="tipo" id="informe"
@@ -57,11 +80,13 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-lg-2">
-                            <label for="">Acción:</label>
-                            <div class="d-grid gap-2">
-                                <button class="btn btn-secondary" type="submit">Consultar</button>
-                            </div>
+                        <div class="col-md-6 col-lg-2 border">
+                            <div class="mb-2">
+                                <label for="">Acción:</label>
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-secondary" type="submit">Consultar</button>
+                                </div>
+                            </div>    
                         </div>
                     </div>
 
@@ -72,7 +97,7 @@
 
                 <div class="row">
                     <div class="col-sm-6 col-lg-9">
-                        <table class="table table-striped">
+                        <table class="table table-striped table-bordered">
                             <thead>
                                 <th class="w-75">Consultores</th>
                                 <th>Seleccionar</th>
@@ -81,10 +106,10 @@
                                 @foreach ($usuarios as $usuario)
                                     <tr class="">
                                         <td class="w-75">{{ $usuario->no_usuario }}</td>
-                                        <td>
+                                        <td >
                                             <div class="form-check">
                                                 <input class="form-check-input checkConsultor" type="checkbox"
-                                                    value="{{ $usuario->co_usuario }}" name="co_usuario[]" id="flexCheckDefault">
+                                                    value="{{ $usuario->co_usuario }}" cousuario="{{ $usuario->no_usuario }}" name="co_usuario[]" id="flexCheckDefault">
                                             </div>
                                         </td>
                                     </tr>
@@ -94,9 +119,11 @@
                     </div>
 
                     <div class="col-sm-6 col-lg-3">
-                        <h6>Seleccionados:</h6>
-                        <ul class="list-group mt-3" id="listSelected">
-                        </ul>
+                        <div class="border">
+                            <h6 class="mt-2 text-center">Seleccionados:</h6>
+                            <ul class="list-group mt-3" id="listSelected">
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </form>
@@ -115,7 +142,8 @@
 
         checkConsultoresAll.forEach(element => {
             element.addEventListener('change', function(e) {
-                let valor = e.target.value;
+                console.log(e)
+                let valor = e.target.attributes[3].value;
                 if (e.target.checked) {
                     listUserSelected.push(valor)
                 } else {
@@ -131,7 +159,7 @@
             let listSelected = document.querySelector('#listSelected');
             let listhml = '';
             list.forEach(function(val) {
-                listhml += '<li class="list-group-item">' + val + '</li>';
+                listhml += '<li class="list-group-item text-center">' + val + '</li>';
             })
 
             listSelected.innerHTML = listhml;
