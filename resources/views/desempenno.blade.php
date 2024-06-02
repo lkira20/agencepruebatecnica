@@ -14,17 +14,17 @@
                 <div class="container py-2 mt-3">
                     <h5>Periodo</h5>
                     <div class="row">
-                        <div class="col-2">
+                        <div class="col-md-6 col-lg-2">
                             <label for="fechaInicio">Fecha inicio :</label>
                             <input name="fechaInicio" type="date" class="form-control" id="fechaInicio" class="date-picker"
                                 placeholder="Fecha inicio" />
                         </div>
-                        <div class="col-2">
+                        <div class="col-md-6 col-lg-2">
                             <label for="fechaFin">Fecha fin :</label>
                             <input name="fechaFin" type="date" class="form-control" id="fechaFin" class="date-picker"
                                 placeholder="Fecha fin" />
                         </div>
-                        <div class="col-6">
+                        <div class="col-md-6 col-lg-6">
                             <label for="">Seleccione el tipo de resultado a obtener:</label>
                             <div class="row">
                                 <div class="col-4">
@@ -56,7 +56,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-2">
+                        <div class="col-md-6 col-lg-2">
                             <label for="">Acción:</label>
                             <div class="d-grid gap-2">
                                 <button class="btn btn-secondary" type="submit">Consultar</button>

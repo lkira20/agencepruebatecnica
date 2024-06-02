@@ -17,7 +17,7 @@
             <h1 style="font-size: 1.5rem;">{{$titulo}}</h1>
 
             @foreach ($datosFormateados as $co_usuario => $datos)
-                <table class="table table-striped mt-4">
+                <table class="table table-striped mt-4 table-responsive">
                     <tr class="table-dark">
                         <th colspan="5">
                             <h3>{{ $co_usuario }}</h3>
