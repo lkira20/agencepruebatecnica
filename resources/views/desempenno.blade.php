@@ -5,7 +5,6 @@
 @endsection
 
 @section('content')
-
     <div class="container card shadow mt-2">
         <div class="card-body">
             <h1>Calculos Por consultor</h1>
@@ -17,13 +16,13 @@
                     <div class="row">
                         <div class="col-md-6 col-lg-2">
                             <label for="fechaInicio">Fecha inicio :</label>
-                            <input name="fechaInicio" type="date" class="form-control" id="fechaInicio" class="date-picker"
-                                placeholder="Fecha inicio" />
+                            <input name="fechaInicio" type="date" class="form-control" id="fechaInicio"
+                                class="date-picker" placeholder="Fecha inicio" value="{{ Cookie::get('fecha_inicio') ?? '' }}"/>
                         </div>
                         <div class="col-md-6 col-lg-2">
                             <label for="fechaFin">Fecha fin :</label>
                             <input name="fechaFin" type="date" class="form-control" id="fechaFin" class="date-picker"
-                                placeholder="Fecha fin" />
+                                placeholder="Fecha fin" value="{{ Cookie::get('Fecha_fin') ?? '' }}"/>
                         </div>
                         <div class="col-md-6 col-lg-6">
                             <label for="">Seleccione el tipo de resultado a obtener:</label>
@@ -75,7 +74,11 @@
                         <table class="table table-striped">
                             <thead>
                                 <th class="w-75">Consultores</th>
-                                <th>Seleccionar</th>
+                                <th>
+                                    <span>Seleccionar</span>
+                                    <input class="form-check-input" type="checkbox" name="all_usuarios" id="all_usuarios">
+
+                                </th>
                             </thead>
                             <tbody>
                                 @foreach ($usuarios as $usuario)
@@ -84,7 +87,8 @@
                                         <td>
                                             <div class="form-check">
                                                 <input class="form-check-input checkConsultor" type="checkbox"
-                                                    value="{{ $usuario->co_usuario }}" name="co_usuario[]" id="flexCheckDefault">
+                                                    value="{{ $usuario->co_usuario }}" cousuario="{{ $usuario->no_usuario }}"  name="co_usuario[]"
+                                                    id="flexCheckDefault">
                                             </div>
                                         </td>
                                     </tr>
@@ -115,7 +119,7 @@
 
         checkConsultoresAll.forEach(element => {
             element.addEventListener('change', function(e) {
-                let valor = e.target.value;
+                let valor = e.target.attributes[3].value;
                 if (e.target.checked) {
                     listUserSelected.push(valor)
                 } else {
@@ -136,5 +140,27 @@
 
             listSelected.innerHTML = listhml;
         }
+
+        let checkAll = document.querySelector('#all_usuarios');
+
+        checkAll.addEventListener('change', function(e) {
+
+            if (e.target.checked) {
+                listUserSelected = [];
+                PintarList(listUserSelected);
+                checkConsultoresAll.forEach(element => {
+                    element.checked = true;
+                    let valor = element.attributes[3].value;
+                    listUserSelected.push(valor);
+                });
+                PintarList(listUserSelected);
+            } else {
+                checkConsultoresAll.forEach(element => {
+                    element.checked = false;
+                });
+                listUserSelected = [];
+                PintarList(listUserSelected);
+            }
+        })
     </script>
 @endsection

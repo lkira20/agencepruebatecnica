@@ -9,6 +9,7 @@ use App\Models\CaoUsuario;
 use App\Traits\Calcular;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
 
 class DesempennoController extends Controller
@@ -34,6 +35,11 @@ class DesempennoController extends Controller
         $usuarios = $request->co_usuario;
         $fechaInicio = $request->fechaInicio;
         $fechaFin = $request->fechaFin;
+        //guardamos la fecha para su posterior uso
+        $cookieFechaInicio = Cookie::forever('fecha_inicio', $fechaInicio);
+        $cookieFechaFin = Cookie::forever('Fecha_fin', $fechaFin);
+        Cookie::queue($cookieFechaInicio);
+        Cookie::queue($cookieFechaFin);
 
         switch ($request->tipo) {
             case 'informe':
