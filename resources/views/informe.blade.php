@@ -43,13 +43,18 @@
                                 <td>{{ precioFormato($valores['gananciasNetas']) }}</td>
                                 <td>{{ precioFormato($valores['costo_fijo']) }}</td>
                                 <td>{{ precioFormato($valores['comision']) }}</td>
-                                <td>{{ precioFormato($valores['lucro']) }}</td>
+                                <td>
+                                    @php 
+                                        $lucro = $valores['gananciasNetas'] - ($valores['costo_fijo'] + $valores['comision']);
+                                        $totalLucro += $lucro;
+                                    @endphp
+                                    {{ precioFormato($lucro) }}
+                                </td>
                             </tr>
                             @php
                                 $totalReceitaLiquida += $valores['gananciasNetas'];
                                 $totalCustoFixo += $valores['costo_fijo'];
                                 $totalComision += $valores['comision'];
-                                $totalLucro += $valores['lucro'];
                             @endphp
                         @endforeach
                         <tr class="table-dark">

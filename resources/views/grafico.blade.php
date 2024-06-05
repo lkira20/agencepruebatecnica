@@ -36,7 +36,7 @@
                 title: {
                     text: ''
                 },
-                max: 320000
+                max: 32000
             },
             tooltip: {
                 valueSuffix: ''

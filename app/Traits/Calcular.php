@@ -22,7 +22,6 @@ trait Calcular {
             DB::raw('valor - (valor * (total_imp_inc /100)) as ganancias_neta'),
             'brut_salario as costo_fijo',
             DB::raw('(valor - (valor * (total_imp_inc/100))) * (comissao_cn/100) as comision'),
-            DB::raw('(valor - (valor * (total_imp_inc/100))) - (brut_salario + ((valor - (valor * (total_imp_inc/100))) * (comissao_cn/100))) as lucro'),
         )
         ->get()
         ->groupBy(['co_usuario', 'annio', 'mes']);

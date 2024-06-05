@@ -56,7 +56,7 @@
             },
             tooltip: {
                 formatter: function() {
-                    return '<b>% ' + this.y+'</b>';
+                    return '<b>% ' + this.y.toFixed(2)+'</b>';
                 }
             },
             series: [{
